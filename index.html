@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Dynamic Event Listener Example</title>
+    <style>
+        button {
+            display: block;
+            padding: 5px 10px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+<button>Click Me</button>
+<script src="src/dynamiceventlistener.js"></script>
+<script>
+    addDynamicEventListener('button', 'click', function() {
+        var button = document.createElement('button');
+        button.innerHTML = 'Click Me';
+        document.body.appendChild(button);
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "dynamiceventlistener",
+  "version": "1.0.0",
+  "description": "Add event listeners to dynamic elements",
+  "main": "dynamiceventlistener.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PaulBGD/dynamiceventlistener"
+  },
+  "keywords": [
+    "browser",
+    "dynamic",
+    "event",
+    "listener",
+    "event"
+  ],
+  "author": "Paul Sauve <paul@burngames.net> (https://paulb.gd/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PaulBGD/dynamiceventlistener/issues"
+  },
+  "homepage": "https://github.com/PaulBGD/dynamiceventlistener"
+}
