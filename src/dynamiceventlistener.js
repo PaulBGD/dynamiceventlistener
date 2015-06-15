@@ -1,14 +1,9 @@
-(function (global) {
+(function (global, document) {
     function listen(selector, event, listener) {
-        if (Object.prototype.toString.call(listener) !== '[object Function]') {
-            throw new Error('Listener must be a function!');
-        }
-        if (typeof event !== 'string') {
-            throw new Error('Event must be a string');
-        }
-        if (typeof selector !== 'string' || selector.length === 0) {
-            throw new Error('Selector must be a string!');
-        }
+        check(Object.prototype.toString.call(listener) === '[object Function]', 'Listener must be a function');
+        check(typeof event === 'string', 'Event must be a string');
+        check(typeof selector === 'string', 'Selector must be a string');
+
         var select = fastestSelector(selector);
         var last = [];
         setInterval(function updateListeners() {
@@ -83,7 +78,7 @@
     }
 
     function fastestSelector(selector) {
-        if (indexOf(selector, ' ') === -1) {
+        if (selector.indexOf(' ') === -1) {
             if (selector.charAt(0) === '#' && selector.indexOf(' ') === -1) {
                 var cut = selector.substring(1, selector.length);
                 return function () {
@@ -105,6 +100,12 @@
         };
     }
 
+    function check(bool, error) {
+        if (!bool) {
+            throw new Error(error);
+        }
+    }
+
     if (typeof module !== 'undefined' && module.exports) {
         module['exports'] = listen;
     } else if (typeof define !== 'undefined') {
@@ -115,4 +116,4 @@
         global['addDynamicEventListener'] = listen;
     }
 
-})(this);
+})(this, document);
