@@ -24,18 +24,13 @@
                 }
             }
             if (difference) {
-                forEach(last, function (element) {
-                    if (element.detachEvent) {
-                        element.detachEvent(event, listener);
-                    } else {
-                        element.removeEventListener(event, listener);
-                    }
-                });
                 forEach(elements, function (element) {
-                    if (element.attachEvent) {
-                        element.attachEvent(event, listener);
-                    } else {
-                        element.addEventListener(event, listener, false);
+                    if (indexOf(last, element) === -1) {
+                        if (element.attachEvent) {
+                            element.attachEvent(event, listener);
+                        } else {
+                            element.addEventListener(event, listener, false);
+                        }
                     }
                 });
                 last = Array.prototype.slice.call(elements, 0);
